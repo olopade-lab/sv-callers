@@ -1,0 +1,5 @@
+jobs: 150
+cluster: sbatch
+use-conda: true
+cluster: "sbatch -p daenerys --mem={resources.mem_mb} -c {threads} -o logs_slurm/slurm-%j.out -e logs_slurm/slurm-%j.err" # --mail-type=FAIL --mail-user=<user>@uchicago.edu"
+
