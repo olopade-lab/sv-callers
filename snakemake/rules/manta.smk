@@ -30,6 +30,7 @@ rule manta_p:  # paired-samples analysis
         if [ "{config[echo_run]}" -eq "1" ]; then
             echo "{input}" > "{output}"
         else
+            rm -rf "${{OUTDIR}}" && \
             configManta.py \
                 --runDir "${{OUTDIR}}" \
                 --reference "{input.fasta}" \
