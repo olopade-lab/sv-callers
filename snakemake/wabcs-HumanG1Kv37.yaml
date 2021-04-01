@@ -19,6 +19,7 @@ genome: wabcs-HumanG1Kv37/fasta/human_g1k_v37.fasta
 # https://cf.10xgenomics.com/supp/genome/b37/sv_blacklist.bed
 # https://cf.10xgenomics.com/supp/genome/b37/segdups.bedpe
 exclusion_list: wabcs-HumanG1Kv37/sv_blacklist.bed
+segdups_list: wabcs-HumanG1Kv37/segdups.bedpe
 exclude_regions: 1 # use the list (1) or don't (0)
 
 # file extensions used by the workflow

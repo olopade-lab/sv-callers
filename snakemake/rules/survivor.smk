@@ -9,7 +9,9 @@ rule survivor_filter:  # used by both modes
         os.path.join("{path}", "{sample}", "{outdir}", "survivor", "{prefix}" + get_filext("vcf"))
     params:
         excl = exclude_regions(),
-        args = survivor_args("filter")
+        args = survivor_args("filter"),
+	blacklist = config["exclusion_list"],
+	segdups = config["segdups_list"]
     conda:
         "../environment.yaml"
     threads:
@@ -26,7 +28,8 @@ rule survivor_filter:  # used by both modes
             cat "{input}" > "{output}"
         else
             if [ "{params.excl}" -eq "1" ]; then
-                SURVIVOR filter "{input}" {params.args} "{output}"
+                SURVIVOR filter "{input}" "{params.blacklist}" {params.args} "{output}"
+                SURVIVOR filter "{input}" "{params.segdups}" {params.args} "{output}"
             else
                 ln -sr "{input}" "{output}"
             fi
